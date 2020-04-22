@@ -1,4 +1,4 @@
-# convertor-app
+# converter-app
 Reactive REST endpoints to handle currency conversion.
 
 ## Getting Started:
@@ -30,7 +30,7 @@ POST: http://localhost:8080/currency/converter
     "amount": 10
 }
 ```
-List of supported bases: USD, EUR, CAD, PLN, GBP,UAH *(in case need more, this enum [Bases.class](https://github.com/temporaryusernamedeveloper/convertor-app/blob/master/src/main/java/com/uss/convertorapp/enums/Bases.java) take care of it.)*.
+List of supported bases: USD, EUR, CAD, PLN, GBP, UAH *(in case need more, this enum [Bases.class](https://github.com/temporaryusernamedeveloper/convertor-app/blob/master/src/main/java/com/uss/convertorapp/enums/Bases.java) take care of it.)*.
 
 
 ### How to write tests:
@@ -50,5 +50,6 @@ As extra task, there were implemented internal memory caching. (If we have one a
 but if need scaling we have to move to external caching).
 
 ### IMPORTANT:
-Everything is impleemnted due task description.
-But I propose another solution, which will have another system characteristics: availability, distributive, and don't overload external system(As we don't have any SLA from external providers).
+Everything is implemented due task and architectural description.
+But I propose another solution, which will have another system characteristics: availability, distributive, and don't overload external system for many users.(As we don't have any SLA from external providers). THIS IS NOT IMPLEMENTED - JUST PROPOSAL.
+![shcema](https://raw.githubusercontent.com/temporaryusernamedeveloper/convertor-app/master/src/main/resources/Currency_system_schema.PNG)
