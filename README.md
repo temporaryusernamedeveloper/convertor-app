@@ -30,7 +30,8 @@ POST: http://localhost:8080/currency/converter
     "amount": 10
 }
 ```
-List of supported bases: USD, EUR, CAD, PLN, GBP *(in case need more, this enum [Bases.class](https://github.com/temporaryusernamedeveloper/convertor-app/blob/master/src/main/java/com/uss/convertorapp/enums/Bases.java) take care of it.)*.
+List of supported bases: USD, EUR, CAD, PLN, GBP,UAH *(in case need more, this enum [Bases.class](https://github.com/temporaryusernamedeveloper/convertor-app/blob/master/src/main/java/com/uss/convertorapp/enums/Bases.java) take care of it.)*.
+
 
 ### How to write tests:
 
