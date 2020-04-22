@@ -6,7 +6,7 @@ package com.uss.convertorapp.enums;
  * @author Iurii Geto
  */
 public enum Bases {
-  USD("USD"), EUR("EUR");
+  USD("USD"), EUR("EUR"), CAD("CAD"), PLN("PLN"), GBP("GBP"), UAH("UAH");
 
   private String base;
 

@@ -1,7 +1,7 @@
 package com.uss.convertorapp.services.impl;
 
 import com.uss.convertorapp.enums.Bases;
-import com.uss.convertorapp.exceptions.ProviderNotAvailableException;
+import com.uss.convertorapp.exceptions.ProviderException;
 import com.uss.convertorapp.services.ConversionRateService;
 import com.uss.convertorapp.services.ConversionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,8 +49,6 @@ public class DefaultConversionService implements ConversionService {
       return Mono.just(scaleValue(value));
     } else {
       return conversionRateService.getConversionRate(from, to)
-          // in case empty stream
-          .switchIfEmpty(Mono.error(new ProviderNotAvailableException()))
           .map(currency -> convertValue(currency, value))
           .map(this::scaleValue);
     }

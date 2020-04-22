@@ -3,12 +3,14 @@ package com.uss.convertorapp.services.impl.providers;
 import com.uss.convertorapp.enums.Bases;
 import com.uss.convertorapp.models.providers.CurrencyProviderResourceIO;
 import com.uss.convertorapp.services.CurrencyRateProvider;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Real implementation with which integrates with 'https://api.exchangeratesapi.io/latest?base=USD'.
@@ -22,6 +24,9 @@ import java.util.Map;
 public class CurrencyRateProviderIO implements CurrencyRateProvider {
 
   private final WebClient webClient;
+
+  @Getter
+  private final Set<Bases> supportedBases = Set.of(Bases.USD, Bases.EUR);
 
   @Autowired
   public CurrencyRateProviderIO(@Qualifier("webClientIO") WebClient webClientIO) {

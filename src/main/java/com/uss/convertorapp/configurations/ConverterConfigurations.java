@@ -1,5 +1,6 @@
 package com.uss.convertorapp.configurations;
 
+import com.uss.convertorapp.enums.Bases;
 import com.uss.convertorapp.models.providers.CurrencyProviderResourceCOM;
 import com.uss.convertorapp.models.providers.CurrencyProviderResourceIO;
 import com.uss.convertorapp.services.CurrencyRateProvider;
@@ -17,6 +18,8 @@ import org.springframework.http.client.reactive.ClientHttpConnector;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.netty.http.client.HttpClient;
+
+import java.util.Set;
 
 /**
  * @author Iurii Geto
@@ -80,7 +83,8 @@ public class ConverterConfigurations {
       @Qualifier("webClientIO") WebClient webClient) {
     return new DefaultCurrencyRateProvider<>(webClient, (from, uriBuilder) -> uriBuilder
         .queryParam("base", from.getBase())
-        .build(), CurrencyProviderResourceIO.class, CurrencyProviderResourceIO::getRates);
+        .build(), CurrencyProviderResourceIO.class, CurrencyProviderResourceIO::getRates,
+        Set.of(Bases.USD, Bases.EUR, Bases.CAD, Bases.PLN, Bases.GBP));
   }
 
   /**
@@ -94,6 +98,7 @@ public class ConverterConfigurations {
       @Qualifier("webClientCom") WebClient webClient) {
     return new DefaultCurrencyRateProvider<>(webClient, (from, uriBuilder) -> uriBuilder
         .path("/" + from.getBase())
-        .build(), CurrencyProviderResourceCOM.class, CurrencyProviderResourceCOM::getRates);
+        .build(), CurrencyProviderResourceCOM.class, CurrencyProviderResourceCOM::getRates,
+        Set.of(Bases.USD, Bases.EUR, Bases.CAD, Bases.PLN, Bases.GBP, Bases.UAH));
   }
 }
